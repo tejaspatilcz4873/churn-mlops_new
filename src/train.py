@@ -91,7 +91,22 @@ def evaluate_model(model, X_val, y_val):
 
 def main(args):
     # Load data
-    df = load_data(args.data_path)
+    df = pd.read_csv(args.data_path)
+
+    # -------------------------------
+    # 🧹 Handle missing / invalid rows
+    # -------------------------------
+    # Drop rows where the target `Churn` is NaN
+    df = df.dropna(subset=['Churn'])
+
+    # (Optional) Drop rows with missing features as well
+    df = df.dropna()
+
+    # Reset index after dropping rows
+    df.reset_index(drop=True, inplace=True)
+
+    print(f"✅ Data loaded: {df.shape[0]} rows after dropping invalid rows")
+
     X, y = prepare_xy(df)
     X_train, X_val, y_train, y_val = train_val_split(X, y, test_size=0.2)
 
