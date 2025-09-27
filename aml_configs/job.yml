@@ -1,6 +1,6 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 
-name: churn-train-job
+# name: churn-train-job       # <-- remove this line
 display_name: churn-train-job
 experiment_name: churn-mlops
 
