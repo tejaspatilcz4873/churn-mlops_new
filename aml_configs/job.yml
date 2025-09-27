@@ -1,14 +1,16 @@
 $schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
 
-# name: churn-train-job       # <-- remove this line
+name: churn-train-job
 display_name: churn-train-job
 experiment_name: churn-mlops
 
-
 compute: azureml:cpu-cluster
 
+# Point to repo root
+code: ..
+
 environment:
-  conda_file: ../env/environment.yml                 # fixed
+  conda_file: env/environment.yml
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
 
 command: >
@@ -16,11 +18,10 @@ command: >
   --data-path ${{inputs.training_data}}
   --output-dir ${{outputs.model_output}}
 
-
 inputs:
   training_data:
     type: uri_file
-    path: ../data/customer_churn_dataset-training-master.csv   # ✅ fixed for data
+    path: ../data/customer_churn_dataset-training-master.csv
 
 outputs:
   model_output:
