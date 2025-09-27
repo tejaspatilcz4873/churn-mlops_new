@@ -7,19 +7,18 @@ name: blue
 endpoint_name: churn-endpoint
 
 # Registered model
-model: azureml:churn-model:1   # ✅ correct, since you registered v1
+model: azureml:churn-model:1      # ✅ Ensure the version matches your registered model
 
 # Code configuration
 code_configuration:
-  code: ./src                  # ✅ point to folder where predict.py lives
-  scoring_script: predict.py   # ✅ script that defines init() & run()
+  code: ../src                    # ✅ Points to folder where predict.py is located
+  scoring_script: predict.py      # ✅ This script must define init() and run()
 
 # Environment
 environment:
-  conda_file: ../env/environment.yml
+  conda_file: ../env/environment.yml    # ✅ Correct relative path to environment.yml
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
 
 # Compute resources for deployment
-instance_type: Standard_DS2_v2
+instance_type: Standard_DS2_v2          # You can change to DS3_v2 if needed
 instance_count: 1
-
