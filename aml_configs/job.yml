@@ -19,7 +19,8 @@ command: >
 inputs:
   training_data:
     type: uri_file
-    path: ./customer_churn_dataset-training-master.csv   # your actual training file
+    path: ./data/customer_churn_dataset-training-master.csv
+
 
 outputs:
   model_output:
