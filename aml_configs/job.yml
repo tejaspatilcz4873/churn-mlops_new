@@ -1,0 +1,27 @@
+$schema: https://azuremlschemas.azureedge.net/latest/commandJob.schema.json
+
+name: churn-train-job
+display_name: churn-train-job
+experiment_name: churn-mlops
+
+compute: azureml:cpu-cluster
+
+# Use our own custom env for consistency
+environment:
+  conda_file: environment.yml
+  image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
+
+command: >
+  python train.py
+  --data-path ${{inputs.training_data}}
+  --output-dir ${{outputs.model_output}}
+
+inputs:
+  training_data:
+    type: uri_file
+    path: ./customer_churn_dataset-training-master.csv   # your actual training file
+
+outputs:
+  model_output:
+    type: uri_folder
+
