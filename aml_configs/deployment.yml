@@ -16,9 +16,10 @@ code_configuration:
 
 # Environment
 environment:
-  conda_file: ./env/environment.yml   # ✅ relative path to your conda file
+  conda_file: ../env/environment.yml
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
 
 # Compute resources for deployment
 instance_type: Standard_DS2_v2
 instance_count: 1
+
