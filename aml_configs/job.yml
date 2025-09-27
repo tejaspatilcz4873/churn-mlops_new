@@ -7,19 +7,18 @@ experiment_name: churn-mlops
 compute: azureml:cpu-cluster
 
 environment:
-  conda_file: ../env/environment.yml
+  conda_file: ../env/environment.yml                 # fixed
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
 
-
 command: >
-  python src/train.py
+  python ../src/train.py                              # ✅ fixed for src
   --data-path ${{inputs.training_data}}
   --output-dir ${{outputs.model_output}}
 
 inputs:
   training_data:
     type: uri_file
-    path: ./data/customer_churn_dataset-training-master.csv
+    path: ../data/customer_churn_dataset-training-master.csv   # ✅ fixed for data
 
 outputs:
   model_output:
