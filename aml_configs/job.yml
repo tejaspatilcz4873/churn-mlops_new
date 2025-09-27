@@ -11,9 +11,10 @@ environment:
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
 
 command: >
-  python ../src/train.py                              # ✅ fixed for src
+  python src/train.py
   --data-path ${{inputs.training_data}}
   --output-dir ${{outputs.model_output}}
+
 
 inputs:
   training_data:
