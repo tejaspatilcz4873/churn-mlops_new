@@ -6,11 +6,11 @@ experiment_name: churn-mlops
 
 compute: azureml:cpu-cluster
 
-# Point to repo root
+# 👇 This ensures Azure ML uploads the repo root (so it sees src/, data/, env/)
 code: ..
 
 environment:
-  conda_file: env/environment.yml
+  conda_file: ../env/environment.yml      # 👈 fixed path
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
 
 command: >
@@ -21,7 +21,7 @@ command: >
 inputs:
   training_data:
     type: uri_file
-    path: ../data/customer_churn_dataset-training-master.csv
+    path: ../data/customer_churn_dataset-training-master.csv   # 👈 fixed path
 
 outputs:
   model_output:
