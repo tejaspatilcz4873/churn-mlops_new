@@ -1,18 +1,24 @@
 $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.schema.json
 
+# Deployment name
 name: blue
+
+# Endpoint name
 endpoint_name: churn-endpoint
 
-model: azureml:churn-model:1  # update version after registering model
+# Registered model
+model: azureml:churn-model:1   # ✅ correct, since you registered v1
 
+# Code configuration
 code_configuration:
-  code: .
-  scoring_script: predict.py
+  code: ./src                  # ✅ point to folder where predict.py lives
+  scoring_script: predict.py   # ✅ script that defines init() & run()
 
+# Environment
 environment:
-  conda_file: environment.yml
+  conda_file: ./env/environment.yml   # ✅ relative path to your conda file
   image: mcr.microsoft.com/azureml/openmpi4.1.0-ubuntu20.04:latest
 
+# Compute resources for deployment
 instance_type: Standard_DS2_v2
 instance_count: 1
-
