@@ -15,8 +15,8 @@ environment:
 
 command: >
   python src/train.py
-  --data-path ${{inputs.training_data}}
-  --output-dir ${{outputs.model_output}}
+  --data_path ${{inputs.training_data}}
+  --output_dir ${{outputs.model_output}}
 
 inputs:
   training_data:
