@@ -4,7 +4,7 @@ $schema: https://azuremlschemas.azureedge.net/latest/managedOnlineDeployment.sch
 name: blue
 
 # Endpoint name
-endpoint_name: churn-endpoint
+endpoint_name: churn-endpoint-bhaswati-tejas   # 👈 new unique name
 
 # Registered model
 model: azureml:churn-model:1      # ✅ Ensure the version matches your registered model
@@ -22,3 +22,4 @@ environment:
 # Compute resources for deployment
 instance_type: Standard_DS2_v2          # You can change to DS3_v2 if needed
 instance_count: 1
+
